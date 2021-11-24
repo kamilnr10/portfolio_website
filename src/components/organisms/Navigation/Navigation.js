@@ -1,8 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as LogoSvg } from 'assets/svg/dev_now_logo3.svg';
 
+export function useLockBodyScroll() {
+  useLayoutEffect(
+    () => {
+      //get original value of body
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      //prevent scrolling on mount
+      document.body.style.overflow = 'hidden';
+      // re-enable scrolling when component unmounts
+      return () => (document.body.style.overflow = originalStyle);
+    },
+    [] //empty array to ensures effect is only run when mount and unmount
+  );
+}
+
 const MenuSVG = styled.div`
+  margin: 0 15px;
+  z-index: 9999;
+
   svg {
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -53,34 +70,37 @@ const MenuSVG = styled.div`
   }
 `;
 
-const HamburgerMenu = () => {
-  const [isActive, setIsActive] = useState(false);
+const HamburgerMenu = (props) => {
+  //   const [isActive, setIsActive] = useState(false);
 
-  const handleClick = () => {
-    setIsActive(!isActive);
-  };
+  //   const handleClick = () => {
+  //     setIsActive(!isActive);
+  //   };
+  const { handleClick, isActive } = props;
 
   return (
-    <MenuSVG className={isActive ? 'active' : ''} onClick={handleClick}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 200 200">
-        <g strokeWidth="6.5" strokeLinecap="round">
-          <path d="M72 82.286h28.75" fill="#009100" fillRule="evenodd" stroke="#3AE5E3" />
-          <path
-            d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
-            fill="none"
-            stroke="#3AE5E3"
-          />
-          <path d="M72 125.143h28.75" fill="#009100" fillRule="evenodd" stroke="#3AE5E3" />
-          <path
-            d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
-            fill="none"
-            stroke="#3AE5E3"
-          />
-          <path d="M100.75 82.286h28.75" fill="#009100" fillRule="evenodd" stroke="#3AE5E3" />
-          <path d="M100.75 125.143h28.75" fill="#009100" fillRule="evenodd" stroke="#3AE5E3" />
-        </g>
-      </svg>
-    </MenuSVG>
+    <>
+      <MenuSVG className={isActive ? 'active' : ''} onClick={handleClick}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 200 200">
+          <g strokeWidth="6.5" strokeLinecap="round">
+            <path d="M72 82.286h28.75" fill="#009100" fillRule="evenodd" stroke="#3AE5E3" />
+            <path
+              d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
+              fill="none"
+              stroke="#3AE5E3"
+            />
+            <path d="M72 125.143h28.75" fill="#009100" fillRule="evenodd" stroke="#3AE5E3" />
+            <path
+              d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
+              fill="none"
+              stroke="#3AE5E3"
+            />
+            <path d="M100.75 82.286h28.75" fill="#009100" fillRule="evenodd" stroke="#3AE5E3" />
+            <path d="M100.75 125.143h28.75" fill="#009100" fillRule="evenodd" stroke="#3AE5E3" />
+          </g>
+        </svg>
+      </MenuSVG>
+    </>
   );
 };
 
@@ -105,12 +125,12 @@ const NavWrapper = styled.div`
 `;
 
 const Logo = styled(LogoSvg)`
-  width: 50px;
-  height: 50px;
-  margin: 10px;
+  width: 40px;
+  height: 40px;
+  margin: 10px 30px;
 `;
 
-function debounce(func, wait, immediate) {
+const debounce = (func, wait, immediate) => {
   let timeout;
   return function () {
     const context = this,
@@ -124,11 +144,31 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
-}
+};
+
+const AsideNav = styled.div`
+  position: fixed;
+  width: 70vw;
+  height: 100vh;
+  bottom: 0;
+  right: ${({ isActive }) => (isActive ? '0px' : '-70vw')};
+  background-color: ${({ theme }) => theme.colors.backgroundNav};
+  transition: 0.3s ease-in-out;
+`;
+
+const LockScreen = () => {
+  useLockBodyScroll();
+  return <></>;
+};
 
 const Navigation = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
 
   const handleScroll = debounce(() => {
     const currentScrollPos = window.pageYOffset;
@@ -147,7 +187,9 @@ const Navigation = () => {
     <BodyDiv>
       <Nav visible={visible}>
         <Logo />
-        <HamburgerMenu />
+        <HamburgerMenu isActive={isActive} handleClick={handleClick} />
+        <AsideNav isActive={isActive}></AsideNav>
+        {isActive && <LockScreen />}
       </Nav>
     </BodyDiv>
   );
