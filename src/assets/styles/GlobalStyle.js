@@ -3,14 +3,13 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Ubuntu:wght@300;400;700&display=swap');
 
-html {
+
+
+*, *::after, *::before {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-*, *::after, *::before {
-    box-sizing: inherit;
+    color: ${({ theme }) => theme.colors.text}
 }
 
 body {
@@ -20,11 +19,16 @@ body {
 
 }
 
+
 a, button {
     font-family: 'Ubuntu', sans-serif;
 }
 
 svg {
     font-family: 'Black Ops One', cursive;
+}
+
+li {
+    list-style-type: none;
 }
 `;
