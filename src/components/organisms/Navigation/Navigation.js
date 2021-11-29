@@ -139,6 +139,7 @@ const AsideNav = styled.div`
     height: 100%;
     right: ${({ isActive }) => (isActive ? '0px' : '-100vw')};
     background-color: ${({ theme }) => theme.colors.backgroundNav};
+    box-shadow: ${(props) => (props.isActive ? `10px 10px 10px 10px ${props.theme.colors.backgroundNav}` : '')};
     transition: 0.3s ease-in-out;
   }
 `;
@@ -162,17 +163,46 @@ const NavWrapper = styled.div`
   align-items: center;
   width: 100%;
 
-  ol li {
-    display: flex;
-    flex-direction: column;
+  nav {
+    height: 300px;
 
-    span {
-      color: ${({ theme }) => theme.colors.secondary};
+    ol {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100%;
+    }
+    ol li {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin: 20px 0;
+
+      span {
+        color: ${({ theme }) => theme.colors.secondary};
+      }
     }
   }
 `;
 
-const navigationLinks = ['about', 'experience', 'work'];
+const navigationLinks = ['about', 'experience', 'work', 'contact'];
+
+const Button = styled.button`
+  background-color: transparent;
+  margin: 20px 0;
+  padding: 12px 24px;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  letter-spacing: 1.2px;
+  color: ${({ theme }) => theme.colors.secondary};
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondaryBtn};
+  }
+`;
 
 const Navigation = ({ isActive, handleClick }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -208,9 +238,11 @@ const Navigation = ({ isActive, handleClick }) => {
                     </LinkScroll>
                   </li>
                 ))}
+                <NavLink to="/contact">
+                  <Button>Contact form</Button>
+                </NavLink>
               </ol>
             </nav>
-            <NavLink to="/contact">Contact form</NavLink>
           </NavWrapper>
         </AsideNav>
         {isActive && <LockScreen />}

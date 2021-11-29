@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import Navigation from 'components/organisms/Navigation/Navigation';
 import { theme } from 'assets/styles/theme';
+import { Button } from 'components/atoms/Button/Button';
 
 const Wrapper = styled.div`
   position: relative;
@@ -27,7 +28,7 @@ const typing = keyframes`
       width: 0
     }
     to {
-      width: 187px
+      width: 202px
     }
 `;
 
@@ -50,7 +51,7 @@ const AboutMeWrapper = styled.div`
   }
 
   p:nth-child(3) {
-    width: 187px;
+    width: 202px;
     margin: 0;
     padding: 0;
     font-size: ${({ theme }) => theme.fontSize.m};
@@ -59,17 +60,13 @@ const AboutMeWrapper = styled.div`
     border-right: 0.15em solid #3ae5e3; /* The typwriter cursor */
     white-space: nowrap; /* Keeps the content on a single line */
     letter-spacing: 0.15em; /* Adjust as needed */
-    animation: ${typing} 2.5s steps(40, end), ${blinkCaret} 0.75s step-end infinite;
-
-    &::after {
-      content: 'sada';
-      width: 100%;
-    }
+    animation: ${typing} 3.5s steps(40, end), ${blinkCaret} 0.75s step-end infinite;
   }
 
   h1 {
     margin: 10px 0 0 0;
     font-weight: ${({ theme }) => theme.fontBold.bold};
+    letter-spacing: 1.5px;
   }
 
   h2 {
@@ -88,9 +85,10 @@ const AboutMe = ({ blur, id }) => {
       <h1>Kamil Nowak</h1>
       <p>junior frontend developer</p>
       <h2>
-        I'm an administrator of ERP system which is called Netsuite. who is developing programming skills in free time. Currently, I'm focused on
-        learning and looking for opportunity to start work as a Junior Frontend Developer.
+        I'm an administrator of ERP system which is called Netsuite. I develop programming skills in free time. Currently, I'm focused on learning and
+        looking for opportunity to start work as a Junior Frontend Developer.
       </h2>
+      <Button>GitHub</Button>
       <div>
         <h3>
           Hello <br />
