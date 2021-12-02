@@ -8,6 +8,7 @@ export const theme = {
     secondaryBtn: '#3ae5e249',
     text: '#e4e4e4',
     paragraph: '#cccccc',
+    line: '#838383',
   },
   fontSize: {
     xl: '34px',
@@ -20,5 +21,9 @@ export const theme = {
     light: 300,
     regular: 400,
     bold: 700,
+  },
+  letterSpacing: {
+    m: '2px',
+    s: '1.3px',
   },
 };

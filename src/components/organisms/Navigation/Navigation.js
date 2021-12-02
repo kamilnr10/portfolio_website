@@ -191,8 +191,8 @@ const navigationLinks = ['about', 'experience', 'work', 'contact'];
 const Button = styled.button`
   background-color: transparent;
   margin: 20px 0;
-  padding: 12px 24px;
-  font-size: ${({ theme }) => theme.fontSize.m};
+  padding: 12px 20px;
+  font-size: ${({ theme }) => theme.fontSize.l};
   letter-spacing: 1.2px;
   color: ${({ theme }) => theme.colors.secondary};
   border: 1px solid ${({ theme }) => theme.colors.secondary};
