@@ -131,11 +131,14 @@ const Header = styled.h1`
   flex-direction: row;
   align-items: center;
   padding: 70px 0 25px 0;
+  width: 100%;
+  white-space: nowrap;
 
   &::before {
     content: '01.';
     position: relative;
     top: 4px;
+    margin-right: 10px;
     font-size: ${({ theme }) => theme.fontSize.l};
     color: ${({ theme }) => theme.colors.secondary};
   }
@@ -147,7 +150,7 @@ const Header = styled.h1`
     top: 5px;
     left: 5px;
     height: 1px;
-    width: 110px;
+    width: 100%;
     background-color: ${({ theme }) => theme.colors.line};
   }
 `;
@@ -162,10 +165,11 @@ const AboutMeWrapper = styled.div`
   ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15px;
     width: 100%;
 
     li {
-      width: 150px;
+      width: 140px;
       font-size: ${({ theme }) => theme.fontSize.m};
     }
   }
@@ -179,7 +183,7 @@ const ImageWrapper = styled.div`
     width: 202px;
     margin: 0 auto;
     border: 1px solid ${({ theme }) => theme.colors.secondary};
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: ${({ theme }) => theme.colors.primary};
     display: flex;
     box-shadow: 0px 3px 24px 0px rgba(58, 229, 227, 1);
@@ -187,6 +191,8 @@ const ImageWrapper = styled.div`
 
     &:hover {
       content: '';
+      transform: scale(1.025);
+      box-shadow: 0px 5px 26px 0px rgba(58, 229, 227, 1);
       /* border: 1px solid white; */
     }
 
@@ -194,17 +200,12 @@ const ImageWrapper = styled.div`
       /* position: relative; */
       width: 200px;
       opacity: 0.5;
+      border-radius: 9px;
       transition: 0.3s ease-in-out;
 
       &:hover {
         opacity: 1;
         transform: scale(1.005);
-
-        &::before {
-          content: '1';
-          position: relative;
-          top: -10px;
-        }
       }
     }
   }
@@ -214,7 +215,7 @@ const AboutMe = ({ id }) => {
   console.log(imgKN1);
   return (
     <AboutMeWrapper>
-      <Header id={id}>&nbsp;About me</Header>
+      <Header id={id}>About me</Header>
       <div>
         <p>
           Hello! My name is Kamil and I enjoy creating websites and apps. I have started interest in webdevelopment in middle 2019. It consumed me
@@ -238,7 +239,7 @@ const AboutMe = ({ id }) => {
         </ul>
         <ImageWrapper>
           <div>
-            <img src={imgKN1} alt="" />
+            <img src={imgKN1} alt="frontend_developer" />
           </div>
         </ImageWrapper>
       </div>

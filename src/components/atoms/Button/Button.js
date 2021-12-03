@@ -14,5 +14,6 @@ export const Button = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondaryBtn};
+    box-shadow: 0px 3px 24px 0px rgba(58, 229, 227, 1);
   }
 `;
