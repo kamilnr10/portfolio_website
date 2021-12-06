@@ -31,7 +31,6 @@ const StyledLine = styled.div`
   bottom: 0;
   transform: translateX(calc(${({ active }) => active - 1} * 120px));
   background-color: ${({ theme }) => theme.colors.secondary};
-  color: ${(props) => console.log(props)}
   transition: 0.3s ease-in-out;
 `;
 
@@ -88,7 +87,7 @@ export const Experience = ({ id, jobsInfo }) => {
   };
 
   const toggleActiveStyles = (id) => {
-    console.log(appState);
+    console.log(appState.objects);
     if (appState.activeObject.idCustom === id) {
       return 'active';
     } else return 'inactive';
