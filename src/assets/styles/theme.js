@@ -4,7 +4,7 @@ export const theme = {
     backgroundNav: '#0d1435',
     backgroundSec: '#1f2f80',
     primary: '#113F67',
-    secondary: '#3AE5E3',
+    secondary: '#3CFFFC',
     secondaryBtn: '#3ae5e249',
     text: '#e4e4e4',
     paragraph: '#cccccc',

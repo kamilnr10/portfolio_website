@@ -1,5 +1,6 @@
 import logo from 'assets/logo.svg';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import 'views/App.css';
 import styled, { ThemeProvider, keyframes, css } from 'styled-components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -15,6 +16,8 @@ import { Home } from 'components/templates/Home/Home';
 import { AboutMe } from 'components/templates/AboutMe/AboutMe';
 import { Experience } from 'components/templates/Experience/Experience';
 
+const API_TOKEN = '61dc3fdf30baeca2543868165b35ee';
+
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
@@ -24,24 +27,79 @@ const Wrapper = styled.div`
 
 function Root() {
   const [isActive, setIsActive] = useState(false);
+  const [aboutMe, setAboutMe] = useState([]);
+  const [jobsInfo, setJobsInfo] = useState([]);
+  const [loading, setloading] = useState(false);
+
+  const fetchData = async () => {
+    let response = await axios
+      .post(
+        'https://graphql.datocms.com/',
+        {
+          query: `
+          {
+            allAboutMes {
+              id
+              description
+            }
+            allJobinfos {
+              idCustom
+              jobName
+              company
+              responsibilityDescription
+              responsibilityDescriptionCopy1
+              responsibilityDescriptionCopy2
+              responsibilityDescriptionCopy3
+              responsibilityDescriptionCopy4
+              responsibilityDescriptionCopy5
+              responsibilityDescriptionCopy6
+            }
+          }
+        `,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${API_TOKEN}`,
+          },
+        }
+      )
+      .then(({ data: { data } }) => {
+        setTimeout(() => {
+          const jobs = data.allJobinfos.sort((a, b) => a.idCustom - b.idCustom);
+          setJobsInfo(jobs);
+          setloading(true);
+        }, 2000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleClick = () => {
     console.log('klik');
     setIsActive(!isActive);
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Wrapper>
-          <SectionWrapper blur={isActive}>
-            <Home />
-            <AboutMe id="about" />
-            <Experience id="experience" />
-          </SectionWrapper>
-          <Navigation isActive={isActive} handleClick={handleClick} />
-        </Wrapper>
+        {loading ? (
+          <Wrapper>
+            <SectionWrapper blur={isActive}>
+              <Home />
+              <AboutMe id="about" />
+              <Experience id="experience" jobsInfo={jobsInfo} />
+            </SectionWrapper>
+            <Navigation isActive={isActive} handleClick={handleClick} />
+          </Wrapper>
+        ) : (
+          <p>Loading ...</p>
+        )}
       </ThemeProvider>
     </Router>
   );

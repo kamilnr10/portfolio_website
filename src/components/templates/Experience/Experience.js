@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Header } from 'components/atoms/Header/Header';
 import { debounce } from 'helpers/debounce';
@@ -31,6 +31,7 @@ const StyledLine = styled.div`
   bottom: 0;
   transform: translateX(calc(${({ active }) => active - 1} * 120px));
   background-color: ${({ theme }) => theme.colors.secondary};
+  color: ${(props) => console.log(props)}
   transition: 0.3s ease-in-out;
 `;
 
@@ -65,44 +66,30 @@ const Button = styled.button`
   }
 `;
 
-export const Experience = ({ id }) => {
+export const Experience = ({ id, jobsInfo }) => {
   const [appState, setAppState] = useState({
-    activeObject: { id: 1, name: 'Netsuite Administrator', description: 'A lot of text is going to be here' },
-    objects: [
-      {
-        id: 1,
-        name: 'Netsuite Administrator',
-        company: 'APS Energia SA',
-        responsibilites: ['Worked with a team', 'Implementing a RPA Robot'],
-        description: 'A lot of text is going to be here. Lorem ipsum test of prot qwa. Budin mnni ei aosd pasdm. Polwdas ncoas woia',
-      },
-      {
-        id: 2,
-        name: 'Localhost Academy',
-        description: 'Second: A lot of text is going to be here. Lorem ipsum test of prot qwa. Budin mnni ei aosd pasdm. Polwdas ncoas woia',
-      },
-      {
-        id: 3,
-        name: 'Daft Academy',
-        description: 'Third: A lot of text is going to be here. Lorem ipsum test of prot qwa. Budin mnni ei aosd pasdm. Polwdas ncoas woia',
-      },
-      {
-        id: 4,
-        name: 'Future Collars',
-        description: 'Forth: A lot of text is going to be here. Lorem ipsum test of prot qwa. Budin mnni ei aosd pasdm. Polwdas ncoas woia',
-      },
-    ],
+    activeObject: {},
+    objects: [],
   });
 
+  useEffect(() => {
+    setAppState({
+      activeObject: jobsInfo[0],
+      objects: jobsInfo,
+    });
+    // console.log(appState);
+  }, []);
+
   const toggleActive = (id) => {
-    const obj = appState.objects.filter((item) => item.id === id)[0];
+    // console.log(console.log(jobsInfo));
+    const obj = appState.objects.filter((item) => item.idCustom === id)[0];
+    console.log(obj);
     setAppState({ ...appState, activeObject: obj });
-    console.log(appState.activeObject);
   };
 
   const toggleActiveStyles = (id) => {
-    // console.log(appState.activeObject.id);
-    if (appState.activeObject.id === id) {
+    console.log(appState);
+    if (appState.activeObject.idCustom === id) {
       return 'active';
     } else return 'inactive';
   };
@@ -116,21 +103,22 @@ export const Experience = ({ id }) => {
             {appState.objects.map((element, index) => {
               return (
                 <Button
-                  key={element.id}
+                  key={element.idCustom}
                   onClick={() => {
-                    toggleActive(element.id);
+                    toggleActive(element.idCustom);
                   }}
-                  className={toggleActiveStyles(element.id)}
+                  className={toggleActiveStyles(element.idCustom)}
                 >
-                  <span>{element.name}</span>
+                  <span>{element.company}</span>
                 </Button>
               );
             })}
-            <StyledLine active={appState.activeObject.id}></StyledLine>
+            <StyledLine active={appState.activeObject.idCustom}></StyledLine>
           </div>
         </TabList>
         <div>
-          <p>{appState.activeObject.description}</p>
+          <p>{appState.activeObject.jobName}</p>
+          <p>{appState.activeObject.responsibilityDescription}</p>
         </div>
       </div>
     </ExperienceWrapper>
