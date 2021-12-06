@@ -8,7 +8,8 @@ export const theme = {
     secondaryBtn: '#3ae5e249',
     text: '#e4e4e4',
     paragraph: '#cccccc',
-    line: '#838383',
+    line: '#757575b2',
+    focus: '#c9c9c9b7',
   },
   fontSize: {
     xl: '34px',
