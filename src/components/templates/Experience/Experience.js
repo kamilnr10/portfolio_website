@@ -15,10 +15,20 @@ const ActiveJob = styled.div`
     color: ${({ theme }) => theme.colors.secondary};
   }
 
+  span {
+    color: ${({ theme }) => theme.colors.paragraph};
+  }
+
   ul {
+    li {
+      margin: 10px 0 10px;
+      padding: 0 0 0 15px;
+      position: relative;
+    }
     li::before {
       content: '▹';
-      padding: 0 5px 0 0;
+      position: absolute;
+      left: 0;
       color: ${({ theme }) => theme.colors.secondary};
     }
   }
