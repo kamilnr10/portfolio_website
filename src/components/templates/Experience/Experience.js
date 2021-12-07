@@ -7,6 +7,23 @@ const ExperienceWrapper = styled.div`
   width: 100%;
 `;
 
+const ActiveJob = styled.div`
+  margin: 20px 0 0 0;
+
+  p {
+    margin: 5px 0 0 0;
+    color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  ul {
+    li::before {
+      content: '▹';
+      padding: 0 5px 0 0;
+      color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
+`;
+
 const TabList = styled.div`
   /* position: relative; */
   display: flex;
@@ -82,7 +99,6 @@ export const Experience = ({ id, jobsInfo }) => {
   const toggleActive = (id) => {
     // console.log(console.log(jobsInfo));
     const obj = appState.objects.filter((item) => item.idCustom === id)[0];
-    console.log(obj);
     setAppState({ ...appState, activeObject: obj });
   };
 
@@ -92,6 +108,8 @@ export const Experience = ({ id, jobsInfo }) => {
       return 'active';
     } else return 'inactive';
   };
+
+  const responsibilities = Object.values(appState.activeObject).filter((item, index) => (index > 4 ? item : null));
 
   return (
     <ExperienceWrapper>
@@ -115,10 +133,18 @@ export const Experience = ({ id, jobsInfo }) => {
             <StyledLine active={appState.activeObject.idCustom}></StyledLine>
           </div>
         </TabList>
-        <div>
-          <p>{appState.activeObject.jobName}</p>
-          <p>{appState.activeObject.responsibilityDescription}</p>
-        </div>
+        <ActiveJob>
+          <h2>{appState.activeObject.job}</h2>
+          <a target="_blank" href={appState.activeObject.website}>
+            <p>@{appState.activeObject.company}</p>
+          </a>
+          <span>{appState.activeObject.date}</span>
+          <ul>
+            {responsibilities.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </ActiveJob>
       </div>
     </ExperienceWrapper>
   );

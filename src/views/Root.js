@@ -1,6 +1,7 @@
 import logo from 'assets/logo.svg';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ReactLoading from 'react-loading';
 import 'views/App.css';
 import styled, { ThemeProvider, keyframes, css } from 'styled-components';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -25,6 +26,14 @@ const Wrapper = styled.div`
   padding: 70px 20px 0 20px;
 `;
 
+const LoadingWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 function Root() {
   const [isActive, setIsActive] = useState(false);
   const [aboutMe, setAboutMe] = useState([]);
@@ -44,8 +53,10 @@ function Root() {
             }
             allJobinfos {
               idCustom
-              jobName
               company
+              job
+              website
+              date
               responsibilityDescription
               responsibilityDescriptionCopy1
               responsibilityDescriptionCopy2
@@ -98,7 +109,9 @@ function Root() {
             <Navigation isActive={isActive} handleClick={handleClick} />
           </Wrapper>
         ) : (
-          <p>Loading ...</p>
+          <LoadingWrapper>
+            <ReactLoading type={'balls'} color={theme.colors.secondary} />
+          </LoadingWrapper>
         )}
       </ThemeProvider>
     </Router>

@@ -33,6 +33,7 @@ p {
 a, button {
     ${'' /* font-family: 'Ubuntu', sans-serif; */}
     font-family: 'Dosis', sans-serif;
+    text-decoration: none;
 }
 
 
