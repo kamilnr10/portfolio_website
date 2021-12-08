@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
 ${'' /* @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Ubuntu:wght@300;400;700&display=swap'); */}
 ${'' /* @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dosis:wght@300;400;700&display=swap'); */}
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@200;300;400;700;800&display=swap');
+${'' /* @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@200;300;400;700;800&display=swap'); */}
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Titillium+Web:wght@300;400;700&display=swap');
 
 *, *::after, *::before {
     box-sizing: border-box;
@@ -14,7 +15,7 @@ ${'' /* @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&fami
 
 body {
     ${'' /* font-family: 'Ubuntu', sans-serif; */}
-    font-family: 'Dosis', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     background-color: #080C21;
     color: #f3f3f3;
 
@@ -32,7 +33,8 @@ p {
 
 a, button {
     ${'' /* font-family: 'Ubuntu', sans-serif; */}
-    font-family: 'Dosis', sans-serif;
+    ${'' /* color: ${({ theme }) => theme.colors.secondary}; */}
+    font-family: 'Titillium Web', sans-serif;
     text-decoration: none;
 }
 

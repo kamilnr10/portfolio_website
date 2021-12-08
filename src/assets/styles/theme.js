@@ -12,10 +12,11 @@ export const theme = {
     focus: '#c9c9c9b7',
   },
   fontSize: {
-    xl: '34px',
-    l: '18px',
-    m: '15px',
-    s: '12px',
+    xxl: '34px',
+    xl: '20px',
+    l: '16px',
+    m: '14px',
+    s: '13px',
     xs: '11px',
   },
   fontBold: {
@@ -24,7 +25,7 @@ export const theme = {
     bold: 700,
   },
   letterSpacing: {
-    m: '2px',
-    s: '1.3px',
+    m: '1.5px',
+    s: '1px',
   },
 };

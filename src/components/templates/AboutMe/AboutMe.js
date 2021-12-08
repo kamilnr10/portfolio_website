@@ -18,7 +18,7 @@ const AboutMeWrapper = styled.div`
 
     li {
       width: 140px;
-      font-size: ${({ theme }) => theme.fontSize.m};
+      font-size: ${({ theme }) => theme.fontSize.s};
     }
   }
 `;

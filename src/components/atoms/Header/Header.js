@@ -7,6 +7,7 @@ export const Header = styled.h1`
   align-items: center;
   padding: 70px 0 25px 0;
   width: 100%;
+  font-size: ${({ theme }) => theme.fontSize.xxl};
   white-space: nowrap;
 
   &::before {

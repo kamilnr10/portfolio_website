@@ -16,6 +16,7 @@ import { SectionWrapper } from 'components/organisms/SectionWrapper/SectionWrapp
 import { Home } from 'components/templates/Home/Home';
 import { AboutMe } from 'components/templates/AboutMe/AboutMe';
 import { Experience } from 'components/templates/Experience/Experience';
+import { Work } from 'components/templates/Work/Work';
 
 const API_TOKEN = '61dc3fdf30baeca2543868165b35ee';
 
@@ -105,6 +106,7 @@ function Root() {
               <Home />
               <AboutMe id="about" />
               <Experience id="experience" jobsInfo={jobsInfo} />
+              <Work />
             </SectionWrapper>
             <Navigation isActive={isActive} handleClick={handleClick} />
           </Wrapper>

@@ -46,6 +46,7 @@ export const HomeWrapper = styled.div`
 
   h1 {
     margin: 10px 0 0 0;
+    font-size: ${({ theme }) => theme.fontSize.xxl};
     font-weight: ${({ theme }) => theme.fontBold.bold};
     letter-spacing: 2px;
   }
