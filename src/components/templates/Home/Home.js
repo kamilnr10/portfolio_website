@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Button } from 'components/atoms/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { motion, Variants } from 'framer-motion';
+import { InView } from 'react-intersection-observer';
 
 const typing = keyframes`
  from {
@@ -72,6 +74,8 @@ const GitHubIcon = styled(FontAwesomeIcon)`
   color: ${({ theme }) => theme.colors.secondary};
 `;
 
+const ScrollWrapper = styled.div``;
+
 export const Home = ({ blur, id }) => {
   return (
     <HomeWrapper blur={blur} id={id}>
@@ -85,8 +89,10 @@ export const Home = ({ blur, id }) => {
       </h2>
       <div>
         <Button>
-          GitHub
-          <GitHubIcon icon={faGithub} />
+          <a href="https://github.com/kamilnr10" target="_blank">
+            GitHub
+            <GitHubIcon icon={faGithub} />
+          </a>
         </Button>
       </div>
     </HomeWrapper>

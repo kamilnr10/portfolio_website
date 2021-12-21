@@ -186,7 +186,7 @@ const NavWrapper = styled.div`
   }
 `;
 
-const navigationLinks = ['about', 'experience', 'work', 'contact'];
+const navigationLinks = ['about', 'experience', 'work', 'get in touch'];
 
 const Button = styled.button`
   background-color: transparent;
@@ -233,7 +233,7 @@ const Navigation = ({ isActive, handleClick }) => {
                 {navigationLinks.map((link, index) => (
                   <li key={link}>
                     <span>{`0${index + 1}.`}</span>
-                    <LinkScroll to={link} smooth={true} duration={500} onClick={handleClick}>
+                    <LinkScroll to={link.replace(/ /g, '')} smooth={true} duration={500} onClick={handleClick}>
                       {link.charAt(0).toUpperCase() + link.slice(1)}
                     </LinkScroll>
                   </li>

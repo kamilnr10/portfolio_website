@@ -17,14 +17,16 @@ import { Home } from 'components/templates/Home/Home';
 import { AboutMe } from 'components/templates/AboutMe/AboutMe';
 import { Experience } from 'components/templates/Experience/Experience';
 import { Work } from 'components/templates/Work/Work';
+import { GetInTouch } from 'components/templates/GetInTouch/GetInTouch';
 
 const API_TOKEN = '61dc3fdf30baeca2543868165b35ee';
 
 const Wrapper = styled.div`
   position: relative;
-  width: 100%;
+  /* width: 100vw; */
   height: 100%;
   padding: 70px 20px 0 20px;
+  overflow-x: hidden;
 `;
 
 const LoadingWrapper = styled.div`
@@ -106,7 +108,8 @@ function Root() {
               <Home />
               <AboutMe id="about" />
               <Experience id="experience" jobsInfo={jobsInfo} />
-              <Work />
+              <Work id="work" />
+              <GetInTouch id="getintouch" />
             </SectionWrapper>
             <Navigation isActive={isActive} handleClick={handleClick} />
           </Wrapper>

@@ -36,6 +36,11 @@ a, button {
     ${'' /* color: ${({ theme }) => theme.colors.secondary}; */}
     font-family: 'Titillium Web', sans-serif;
     text-decoration: none;
+    ${'' /* color: ${({ theme }) => theme.colors.secondary} */}
+}
+
+a:visited {
+  color: ${({ theme }) => theme.colors.secondary};
 }
 
 
