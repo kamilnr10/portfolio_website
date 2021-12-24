@@ -78,23 +78,29 @@ const ScrollWrapper = styled.div``;
 
 export const Home = ({ blur, id }) => {
   return (
-    <HomeWrapper blur={blur} id={id}>
-      <p>hello, my name is</p>
-      <h1>Kamil Nowak</h1>
-      <p>aspiring junior frontend developer</p>
-      <h2>
-        I'm a developer who currently works as an administrator of ERP system called Netsuite. I spend most of my free time improving my programming
-        skills, creating websites and apps. Nowadays my goal is to keep learning and to find an opportunity to start working as a Junior Frontend.
-        Developer.
-      </h2>
-      <div>
-        <Button>
-          <a href="https://github.com/kamilnr10" target="_blank">
-            GitHub
-            <GitHubIcon icon={faGithub} />
-          </a>
-        </Button>
-      </div>
-    </HomeWrapper>
+    <InView threshold={0.25} triggerOnce={true}>
+      {({ inView, ref }) => (
+        <motion.div ref={ref} initial={{ opacity: 0, x: 80 }} animate={inView ? { opacity: 1, x: 0 } : { opacity: 0 }} transition={{ duration: 1.4 }}>
+          <HomeWrapper blur={blur} id={id}>
+            <p>hello, my name is</p>
+            <h1>Kamil Nowak</h1>
+            <p>aspiring junior frontend developer</p>
+            <h2>
+              I'm a developer who currently works as an administrator of ERP system called Netsuite. I spend most of my free time improving my
+              programming skills, creating websites and apps. Nowadays my goal is to keep learning and to find an opportunity to start working as a
+              Junior Frontend. Developer.
+            </h2>
+            <div>
+              <Button>
+                <a href="https://github.com/kamilnr10" target="_blank">
+                  GitHub
+                  <GitHubIcon icon={faGithub} />
+                </a>
+              </Button>
+            </div>
+          </HomeWrapper>
+        </motion.div>
+      )}
+    </InView>
   );
 };

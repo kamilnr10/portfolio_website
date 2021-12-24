@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Header } from 'components/atoms/Header/Header';
 import imgKN1 from 'assets/images/imgKN1.png';
+import { motion, Variants } from 'framer-motion';
+import { InView } from 'react-intersection-observer';
 
 const AboutMeWrapper = styled.div`
   width: 100%;
@@ -62,34 +64,39 @@ const ImageWrapper = styled.div`
 export const AboutMe = ({ id }) => {
   console.log(imgKN1);
   return (
-    <AboutMeWrapper>
-      <Header id={id}>About me</Header>
-      <div>
-        <p>
-          Hello! My name is Kamil and I enjoy creating websites and apps. My interest in webdevelopment has sparked in 2019. My journey has started
-          with HTML/CSS and Javascript, then I moved forward to frameworks and deciced to go with React. And guess what? That was a good choice!{' '}
-        </p>
-        <p>
-          Next year I started to work as an administrator of ERP system (Netsuite). It was an incredible opportunity for me to develop my technical
-          and social skills. I worked on implementing the system and one of my responsibilities was to analysize processes within company. In the
-          beginning I cooporated with a small team but after systems's launching, I was already working with everyone in the company. Also I had
-          opportunity to write some scripts in javascript in Netsuite.
-        </p>
-        <p>For now I continue learning React and some other technologies. Here are a few which I've been working recently with:</p>
-        <ul>
-          <li>&#x26A1;Javascript</li>
-          <li>&#x26A1;React</li>
-          <li>&#x26A1;Redux</li>
-          <li>&#x26A1;Dato CMS</li>
-          <li>&#x26A1;Mock Service Worker</li>
-          <li>&#x26A1;Jest</li>
-        </ul>
-        <ImageWrapper>
+    <InView threshold={0.25} triggerOnce={true}>
+      {({ inView, ref }) => (
+        <AboutMeWrapper>
+          <Header id={id}>About me</Header>
           <div>
-            <img src={imgKN1} alt="frontend_developer" />
+            <p>
+              Hello! My name is Kamil and I enjoy creating websites and apps. My interest in webdevelopment has sparked in 2019. My journey has
+              started with HTML/CSS and Javascript, then I moved forward to frameworks and deciced to go with React. And guess what? That was a good
+              choice!{' '}
+            </p>
+            <p>
+              Next year I started to work as an administrator of ERP system (Netsuite). It was an incredible opportunity for me to develop my
+              technical and social skills. I worked on implementing the system and one of my responsibilities was to analysize processes within
+              company. In the beginning I cooporated with a small team but after systems's launching, I was already working with everyone in the
+              company. Also I had opportunity to write some scripts in javascript in Netsuite.
+            </p>
+            <p>For now I continue learning React and some other technologies. Here are a few which I've been working recently with:</p>
+            <motion.ul ref={ref} initial={{ opacity: 0 }} animate={inView && { opacity: 1 }} transition={{ duration: 1 }}>
+              <li>&#x26A1;Javascript</li>
+              <li>&#x26A1;React</li>
+              <li>&#x26A1;Redux</li>
+              <li>&#x26A1;Dato CMS</li>
+              <li>&#x26A1;Mock Service Worker</li>
+              <li>&#x26A1;Jest</li>
+            </motion.ul>
+            <ImageWrapper>
+              <motion.div ref={ref} initial={{ opacity: 0 }} animate={inView && { opacity: 1 }} transition={{ duration: 1 }}>
+                <img src={imgKN1} alt="frontend_developer" />
+              </motion.div>
+            </ImageWrapper>
           </div>
-        </ImageWrapper>
-      </div>
-    </AboutMeWrapper>
+        </AboutMeWrapper>
+      )}
+    </InView>
   );
 };
