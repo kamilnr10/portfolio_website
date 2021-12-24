@@ -1,4 +1,22 @@
-# Getting Started with Create React App
+# My portfolio website v.06
+
+Hello! My name is Kamil and I'm Netsuite administrator. In free time I develop my programming skills to become Frontend Developer.
+
+This project is work in progress.
+- v.06
+
+I started building this site for mobile screen. There are few things which I'm working on:
+- responsive look
+- contact form
+
+Technoglogies which I've used:
+- React
+- framer-motion
+- react-observer
+- datoCMS
+- stleed-components
+- react-router
+- axios
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
