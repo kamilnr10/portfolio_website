@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Header } from 'components/atoms/Header/Header';
 import { Button } from 'components/atoms/Button/Button';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 
@@ -70,7 +69,7 @@ const FormField = ({ id, name, type, values, handleChange, label, placeholder })
   );
 };
 
-const ContactForm = () => {
+export const ContactForm = () => {
   const [values, setValues] = useState('');
 
   const handleChange = (e) => {
@@ -101,21 +100,6 @@ const ContactForm = () => {
         />
         <FormField label="email" name="email" id="email" type="text" placeholder="enter email here..." value={values} handleChange={handleChange} />
       </Form>
-    </div>
-  );
-};
-
-export const GetInTouch = ({ id }) => {
-  return (
-    <div>
-      <Header id={id}>Get in touch</Header>
-      <p>I'm currently looking for new opportunities, my inbox is always open.</p>
-      <Button>
-        <a href="mailto:kamil.nr10@icloud.com?subject=hello!" target="_blank">
-          Say hi
-        </a>
-      </Button>
-      <ContactForm />
     </div>
   );
 };

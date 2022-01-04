@@ -4,7 +4,7 @@ import axios from 'axios';
 import ReactLoading from 'react-loading';
 import 'views/App.css';
 import styled, { ThemeProvider, keyframes, css } from 'styled-components';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import Navigation from 'components/organisms/Navigation/Navigation';
 import { theme } from 'assets/styles/theme';
@@ -18,8 +18,21 @@ import { AboutMe } from 'components/templates/AboutMe/AboutMe';
 import { Experience } from 'components/templates/Experience/Experience';
 import { Work } from 'components/templates/Work/Work';
 import { GetInTouch } from 'components/templates/GetInTouch/GetInTouch';
+import { ContactForm } from 'components/templates/ContactForm/ContactForm';
 
 const API_TOKEN = '61dc3fdf30baeca2543868165b35ee';
+
+const MainScreen = ({ jobsInfo }) => {
+  return (
+    <>
+      <Home />
+      <AboutMe id="about" />
+      <Experience id="experience" jobsInfo={jobsInfo} />
+      <Work id="work" />
+      <GetInTouch id="getintouch" />
+    </>
+  );
+};
 
 const Wrapper = styled.div`
   position: relative;
@@ -105,11 +118,10 @@ function Root() {
         {loading ? (
           <Wrapper>
             <SectionWrapper blur={isActive}>
-              <Home />
-              <AboutMe id="about" />
-              <Experience id="experience" jobsInfo={jobsInfo} />
-              <Work id="work" />
-              <GetInTouch id="getintouch" />
+              <Routes>
+                <Route path="/" exact element={<MainScreen jobsInfo={jobsInfo} />} />
+                <Route path="/contact" element={<ContactForm />} />
+              </Routes>
             </SectionWrapper>
             <Navigation isActive={isActive} handleClick={handleClick} />
           </Wrapper>

@@ -52,4 +52,15 @@ li {
     list-style-type: none;
     font-size: ${({ theme }) => theme.fontSize.m}
 }
+
+input {
+    color: #f3f3f3;
+    border: none; 
+    border-width: 0; 
+    box-shadow: none;
+}
+
+label {
+    color: #f3f3f3;
+}
 `;

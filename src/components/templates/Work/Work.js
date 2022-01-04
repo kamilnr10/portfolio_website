@@ -111,7 +111,7 @@ export const Work = ({ id }) => {
       <Header id={id}>Work</Header>
       <ul>
         {projectsData.map(({ id, name, description, technology, link }) => (
-          <InView threshold={0.25} triggerOnce={true}>
+          <InView key={id} threshold={0.25} triggerOnce={true}>
             {({ inView, ref, entry }) => (
               <motion.li
                 ref={ref}

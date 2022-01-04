@@ -6,6 +6,7 @@ import { useLockBodyScroll } from 'helpers/useLockBodyScroll';
 import { debounce } from 'helpers/debounce';
 import { HamburgerMenu } from 'components/atoms/HamburgerMenu/HamburgerMenu';
 import { Link as LinkScroll, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import pdf from 'assets/resume/resume.pdf';
 
 // const MenuSVG = styled.div`
 //   margin: 0 15px;
@@ -238,9 +239,11 @@ const Navigation = ({ isActive, handleClick }) => {
                     </LinkScroll>
                   </li>
                 ))}
-                <NavLink to="/contact">
-                  <Button>Contact form</Button>
-                </NavLink>
+                <a href={pdf} without rel="noopener noreferrer" target="_blank">
+                  <Button onClick={handleClick} trailingIcon="picture_as_pdf" label="Resume">
+                    PDF
+                  </Button>
+                </a>
               </ol>
             </nav>
           </NavWrapper>
