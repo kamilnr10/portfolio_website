@@ -239,11 +239,12 @@ const Navigation = ({ isActive, handleClick }) => {
                     </LinkScroll>
                   </li>
                 ))}
-                <a href={pdf} without rel="noopener noreferrer" target="_blank">
-                  <Button onClick={handleClick} trailingIcon="picture_as_pdf" label="Resume">
-                    PDF
-                  </Button>
-                </a>
+
+                <Button onClick={handleClick} trailingIcon="picture_as_pdf" label="Resume">
+                  <a href={pdf} rel="noopener noreferrer" target="_blank">
+                    resume
+                  </a>
+                </Button>
               </ol>
             </nav>
           </NavWrapper>
