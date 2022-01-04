@@ -16,9 +16,12 @@ const Form = styled.form`
 const FormTitle = styled.h2``;
 
 const Input = styled.input`
-  position: relative;
-  font-size: 18px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   display: block;
+  padding: 5px 5px;
+  font-size: ${({ theme }) => theme.fontSize.m};
   border: none;
   border-bottom: 1px solid #757575;
   &:focus {
@@ -27,7 +30,7 @@ const Input = styled.input`
 `;
 
 const Label = styled.label`
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: normal;
   position: relative;
   pointer-events: none;
@@ -35,7 +38,8 @@ const Label = styled.label`
   left: 5px;
   top: -2px;
   transition: 0.2s ease all;
-  ${Input}:focus ~ & {
+  ${Input}:focus ~ &,
+  ${Input}:not(:placeholder-shown)${Input}:not(:focus) ~ & {
     top: -14px;
     font-size: 14px;
     color: ${({ theme }) => theme.colors.secondary};
@@ -44,12 +48,9 @@ const Label = styled.label`
 
 const Wrapper = styled.div`
   position: relative;
-  margin: 10px 0;
+  margin: 20px 10px;
 
   input {
-    position: absolute;
-    top: 0px;
-    left: 0px;
     background: none;
     border: 1px solid ${({ theme }) => theme.colors.secondary};
     border-radius: 5px;
@@ -64,7 +65,7 @@ const GitHubIcon = styled(FontAwesomeIcon)`
 const FormField = ({ id, name, type, values, handleChange, label, placeholder }) => {
   return (
     <Wrapper>
-      <Input name={name} id={id} type={type} value={values} onChange={handleChange} />
+      <Input name={name} id={id} type={type} value={values} onChange={handleChange} placeholder=" " />
       <Label for={name}>{name}</Label>
     </Wrapper>
   );
@@ -82,10 +83,6 @@ const ContactForm = () => {
 
   return (
     <div>
-      <NavLink to="/" exact>
-        Return
-        <GitHubIcon icon={faHome} />
-      </NavLink>
       <Form>
         <FormTitle>Contact me</FormTitle>
         <FormField label="name" name="name" id="name" type="text" placeholder="enter name here..." value={values} handleChange={handleChange} />
@@ -111,7 +108,7 @@ export const GetInTouch = ({ id }) => {
       <Header id={id}>Get in touch</Header>
       <p>I'm currently looking for new opportunities, my inbox is always open.</p>
       <Button>
-        <a href="mailto:kamil.nr10@icloud.com?subject=hello!" target="_blank">
+        <a href="mailto:kamil.nr10@icloud.com?subject=hello! I have an opportunity for You!" target="_blank">
           Say hi
         </a>
       </Button>

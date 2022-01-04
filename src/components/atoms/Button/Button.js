@@ -16,4 +16,8 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.secondaryBtn};
     box-shadow: 0px 3px 24px 0px rgba(58, 229, 227, 1);
   }
+
+  a {
+    color: ${({ theme }) => theme.colors.secondary};
+  }
 `;
