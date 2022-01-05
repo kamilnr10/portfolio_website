@@ -5,6 +5,7 @@ import { Button } from 'components/atoms/Button/Button';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { useForm, validate } from 'helpers/useForm';
 
 const Form = styled.form`
   width: 100%;
@@ -20,23 +21,27 @@ const Input = styled.input`
   top: 0px;
   left: 0px;
   display: block;
-  padding: 5px 5px;
+  padding: 8px 5px;
   font-size: ${({ theme }) => theme.fontSize.m};
-  border: none;
-  border-bottom: 1px solid #757575;
+  background: none;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  border-radius: 5px;
   &:focus {
     outline: none;
   }
 `;
 
 const Label = styled.label`
-  font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: normal;
   position: relative;
+  left: 5px;
+  top: 4px;
+  padding: 0 3px;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  font-weight: normal;
+
   pointer-events: none;
   background-color: ${({ theme }) => theme.colors.background};
-  left: 5px;
-  top: -2px;
+
   transition: 0.2s ease all;
   ${Input}:focus ~ &,
   ${Input}:not(:placeholder-shown)${Input}:not(:focus) ~ & {
@@ -48,13 +53,7 @@ const Label = styled.label`
 
 const Wrapper = styled.div`
   position: relative;
-  margin: 20px 10px;
-
-  input {
-    background: none;
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
-    border-radius: 5px;
-  }
+  margin: 25px 10px;
 `;
 
 const GitHubIcon = styled(FontAwesomeIcon)`
@@ -72,31 +71,41 @@ const FormField = ({ id, name, type, values, handleChange, label, placeholder })
 };
 
 const ContactForm = () => {
-  const [values, setValues] = useState('');
+  const { handleChange, values, handleSubmit, errors, sendMessage } = useForm(validate);
+  // const [values, setValues] = useState('');
 
-  const handleChange = (e) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   setValues({
+  //     ...values,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
   return (
     <div>
-      <Form>
+      <Form onSubmit={handleSubmit} noValidate>
         <FormTitle>Contact me</FormTitle>
-        <FormField label="name" name="name" id="name" type="text" placeholder="enter name here..." value={values} handleChange={handleChange} />
-
+        <FormField label="name" name="name" id="name" type="text" placeholder="enter name here..." value={values.name} handleChange={handleChange} />
+        {errors.name && <p>{errors.name}</p>}
         <FormField
           label="subject"
           name="subject"
           id="subject"
           type="text"
           placeholder="enter subject here..."
-          value={values}
+          value={values.subject}
           handleChange={handleChange}
         />
-        <FormField label="email" name="email" id="email" type="text" placeholder="enter email here..." value={values} handleChange={handleChange} />
+        <FormField
+          label="email"
+          name="email"
+          id="email"
+          type="text"
+          placeholder="enter email here..."
+          value={values.email}
+          handleChange={handleChange}
+        />
+        <Button type="submit">{sendMessage ? sendMessage : 'Send'}</Button>
       </Form>
     </div>
   );
