@@ -86,8 +86,7 @@ const Label = styled.label`
   color: ${({ theme }) => theme.colors.line};
   pointer-events: none;
   background-color: ${({ theme }) => theme.colors.background};
-
-  transition: 0.2s ease all;
+  transition: 0.4s ease all;
   ${Input}:focus ~ &,
   ${Input}:not(:placeholder-shown)${Input}:not(:focus) ~ & {
     top: -14px;
