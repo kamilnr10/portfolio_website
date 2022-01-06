@@ -60,6 +60,8 @@ const GitHubIcon = styled(FontAwesomeIcon)`
   color: ${({ theme }) => theme.colors.secondary};
 `;
 
+const FormTextArea = styled.textarea``;
+
 const FormField = ({ id, name, type, values, handleChange, label, placeholder }) => {
   return (
     <Wrapper>
@@ -88,7 +90,6 @@ export const ContactForm = () => {
       <Form>
         <FormTitle>Contact me</FormTitle>
         <FormField label="name" name="name" id="name" type="text" placeholder="enter name here..." value={values} handleChange={handleChange} />
-
         <FormField
           label="subject"
           name="subject"
@@ -99,6 +100,7 @@ export const ContactForm = () => {
           handleChange={handleChange}
         />
         <FormField label="email" name="email" id="email" type="text" placeholder="enter email here..." value={values} handleChange={handleChange} />
+        <FormTextArea></FormTextArea>
       </Form>
     </div>
   );

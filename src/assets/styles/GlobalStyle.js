@@ -60,7 +60,13 @@ input {
     box-shadow: none;
 }
 
-label {
+label, textarea {
+    font-family: 'Titillium Web', sans-serif;
     color: #f3f3f3;
+}
+
+input ~ grammarly-extension,
+textarea ~ grammarly-extension {
+  display: none;
 }
 `;

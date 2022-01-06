@@ -83,7 +83,9 @@ export const Home = ({ blur, id }) => {
         <motion.div ref={ref} initial={{ opacity: 0, x: 80 }} animate={inView ? { opacity: 1, x: 0 } : { opacity: 0 }} transition={{ duration: 1.4 }}>
           <HomeWrapper blur={blur} id={id}>
             <p>hello, my name is</p>
-            <h1>Kamil Nowak</h1>
+            <motion.h1 ref={ref} initial={{ opacity: 0, x: 80 }} animate={inView ? { opacity: 1, x: 0 } : { opacity: 0 }} transition={{ delay: 1 }}>
+              Kamil Nowak
+            </motion.h1>
             <p>aspiring junior frontend developer</p>
             <h2>
               I'm a developer who currently works as an administrator of ERP system called Netsuite. I spend most of my free time improving my

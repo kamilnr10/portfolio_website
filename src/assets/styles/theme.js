@@ -10,6 +10,7 @@ export const theme = {
     paragraph: '#cccccc',
     line: '#757575b2',
     focus: '#c9c9c9b7',
+    error: `#c45050fb`,
   },
   fontSize: {
     xxl: '34px',

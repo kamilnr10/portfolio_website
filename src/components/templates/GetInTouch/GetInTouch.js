@@ -7,16 +7,44 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { useForm, validate } from 'helpers/useForm';
 
-const Form = styled.form`
+const GetInTouchWrapper = styled.div`
+  width: 100%;
+
+  button {
+    display: block;
+    margin: 20px auto;
+  }
+
+  p {
+    &:last-of-type {
+      margin: 0 0 20px;
+      text-align: center;
+    }
+  }
+`;
+
+const FormWrapper = styled.div`
   width: 100%;
   border: none;
-  border: 2px solid ${({ theme }) => theme.colors.secondary};
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 5px;
+`;
+
+const Form = styled.form`
+  padding: 0 10px;
+
+  p {
+    position: relative;
+    top: 10px;
+    color: ${({ theme }) => theme.colors.error};
+    font-size: ${({ theme }) => theme.fontSize.xs};
+  }
 `;
 
 const FormTitle = styled.h2``;
 
 const Input = styled.input`
+  width: 100%;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -26,6 +54,23 @@ const Input = styled.input`
   background: none;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 5px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const TextArea = styled.textarea`
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  padding: 8px 5px;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  background: none;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  border-radius: 5px;
+
   &:focus {
     outline: none;
   }
@@ -38,7 +83,7 @@ const Label = styled.label`
   padding: 0 3px;
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: normal;
-
+  color: ${({ theme }) => theme.colors.line};
   pointer-events: none;
   background-color: ${({ theme }) => theme.colors.background};
 
@@ -49,17 +94,45 @@ const Label = styled.label`
     font-size: 14px;
     color: ${({ theme }) => theme.colors.secondary};
   }
+
+  ${TextArea}:focus ~ &,
+  ${TextArea}:not(:placeholder-shown)${TextArea}:not(:focus) ~ & {
+    top: -14px;
+    font-size: 14px;
+    color: ${({ theme }) => theme.colors.secondary};
+  }
 `;
 
 const Wrapper = styled.div`
   position: relative;
-  margin: 25px 10px;
+  margin: 25px 0 0;
 `;
 
 const GitHubIcon = styled(FontAwesomeIcon)`
   margin: 0 0 0 5px;
   color: ${({ theme }) => theme.colors.secondary};
 `;
+
+const TextWrapper = styled(Wrapper)`
+  &:focus {
+    outline: none;
+  }
+
+  label {
+    position: absolute;
+    top: 4px;
+    left: 5px;
+  }
+`;
+
+const FormTextArea = ({ id, name, type, values, handleChange, label, placeholder }) => {
+  return (
+    <TextWrapper>
+      <TextArea name={name} id={id} type={type} value={values} onChange={handleChange} placeholder=" " />
+      <Label htmlFor={name}>{name}</Label>
+    </TextWrapper>
+  );
+};
 
 const FormField = ({ id, name, type, values, handleChange, label, placeholder }) => {
   return (
@@ -82,7 +155,7 @@ const ContactForm = () => {
   // };
 
   return (
-    <div>
+    <FormWrapper>
       <Form onSubmit={handleSubmit} noValidate>
         <FormTitle>Contact me</FormTitle>
         <FormField label="name" name="name" id="name" type="text" placeholder="enter name here..." value={values.name} handleChange={handleChange} />
@@ -96,6 +169,7 @@ const ContactForm = () => {
           value={values.subject}
           handleChange={handleChange}
         />
+        {errors.subject && <p>{errors.subject}</p>}
         <FormField
           label="email"
           name="email"
@@ -105,15 +179,27 @@ const ContactForm = () => {
           value={values.email}
           handleChange={handleChange}
         />
+        {errors.email && <p>{errors.email}</p>}
+        <FormTextArea
+          label="message"
+          name="message"
+          id="message"
+          type="text"
+          placeholder="enter message here..."
+          value={values.message}
+          handleChange={handleChange}
+          data-gramm="false"
+        />
+        {errors.message && <p>{errors.message}</p>}
         <Button type="submit">{sendMessage ? sendMessage : 'Send'}</Button>
       </Form>
-    </div>
+    </FormWrapper>
   );
 };
 
 export const GetInTouch = ({ id }) => {
   return (
-    <div>
+    <GetInTouchWrapper>
       <Header id={id}>Get in touch</Header>
       <p>I'm currently looking for new opportunities, my inbox is always open.</p>
       <Button>
@@ -121,7 +207,8 @@ export const GetInTouch = ({ id }) => {
           Say hi
         </a>
       </Button>
+      <p>or</p>
       <ContactForm />
-    </div>
+    </GetInTouchWrapper>
   );
 };

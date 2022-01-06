@@ -5,6 +5,7 @@ export const initialFormState = {
   name: '',
   email: '',
   subject: '',
+  message: '',
 };
 
 const { REACT_APP_EMAILJS_SERVICE_API, REACT_APP_EMAILJS_ACCOUNT_API } = process.env;
@@ -31,6 +32,12 @@ export const validate = (form) => {
     errorsInfo.email = 'Max char length of email address is 50';
   }
 
+  if (!form.message.trim()) errorsInfo.message = 'Message required';
+  if (form.message.length < 4) errorsInfo.message = 'Message is too short';
+  if (form.message.length > 500) {
+    errorsInfo.message = 'Max char length of message is 500';
+  }
+
   return errorsInfo;
 };
 
@@ -45,6 +52,7 @@ export const useForm = (validateFn) => {
       ...values,
       [name]: value,
     });
+    console.log(name);
   };
 
   const handleSubmit = (e) => {
@@ -53,6 +61,7 @@ export const useForm = (validateFn) => {
     const validatedErrors = validateFn(values);
     if (Object.keys(validatedErrors).length > 0) {
       setErrors(validatedErrors);
+      console.log(errors);
     } else {
       console.log('wyslano');
       setSendMessage('Wysłano');
