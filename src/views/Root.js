@@ -19,6 +19,7 @@ import { Experience } from 'components/templates/Experience/Experience';
 import { Work } from 'components/templates/Work/Work';
 import { GetInTouch } from 'components/templates/GetInTouch/GetInTouch';
 import { ContactForm } from 'components/templates/ContactForm/ContactForm';
+import { Footer } from 'components/organisms/Footer/Footer';
 
 const API_TOKEN = '61dc3fdf30baeca2543868165b35ee';
 
@@ -30,6 +31,7 @@ const MainScreen = ({ jobsInfo }) => {
       <Experience id="experience" jobsInfo={jobsInfo} />
       <Work id="work" />
       <GetInTouch id="getintouch" />
+      <Footer />
     </>
   );
 };
