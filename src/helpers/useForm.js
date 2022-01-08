@@ -64,7 +64,7 @@ export const useForm = (validateFn) => {
       console.log(errors);
     } else {
       console.log('wyslano');
-      setSendMessage('Wysłano');
+      setSendMessage('Sent');
       setTimeout(() => setSendMessage(''), 10000);
       emailjs.sendForm(REACT_APP_EMAILJS_SERVICE_API, 'template_wr2n5cr', e.target, REACT_APP_EMAILJS_ACCOUNT_API).then(
         (result) => {

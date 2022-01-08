@@ -31,7 +31,6 @@ const MainScreen = ({ jobsInfo }) => {
       <Experience id="experience" jobsInfo={jobsInfo} />
       <Work id="work" />
       <GetInTouch id="getintouch" />
-      <Footer />
     </>
   );
 };

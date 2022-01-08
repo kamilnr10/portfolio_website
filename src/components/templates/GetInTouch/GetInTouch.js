@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { useForm, validate } from 'helpers/useForm';
+import { Footer } from 'components/organisms/Footer/Footer';
 
 const GetInTouchWrapper = styled.div`
   width: 100%;
@@ -16,7 +17,7 @@ const GetInTouchWrapper = styled.div`
   }
 
   p {
-    &:last-of-type {
+    &:nth-child(4) {
       margin: 0 0 20px;
       text-align: center;
     }
@@ -38,6 +39,11 @@ const Form = styled.form`
     top: 10px;
     color: ${({ theme }) => theme.colors.error};
     font-size: ${({ theme }) => theme.fontSize.xs};
+    text-align: left;
+
+    &:nth-child(9) {
+      top: 0;
+    }
   }
 `;
 
@@ -62,7 +68,7 @@ const Input = styled.input`
 
 const TextArea = styled.textarea`
   display: block;
-  position: relative;
+  /* position: relative; */
   width: 100%;
   height: 100px;
   padding: 8px 5px;
@@ -208,6 +214,7 @@ export const GetInTouch = ({ id }) => {
       </Button>
       <p>or</p>
       <ContactForm />
+      <Footer />
     </GetInTouchWrapper>
   );
 };
