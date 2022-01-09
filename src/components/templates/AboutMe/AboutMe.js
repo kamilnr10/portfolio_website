@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, createRef } from 'react';
 import styled from 'styled-components';
 import { Header } from 'components/atoms/Header/Header';
 import imgKN1 from 'assets/images/imgKN1.png';
 import { motion, Variants } from 'framer-motion';
 import { InView } from 'react-intersection-observer';
+import lottie from 'lottie-web';
+import animation from 'assets/lottie/bolt.json';
 
 const AboutMeWrapper = styled.div`
   width: 100%;
@@ -20,6 +22,7 @@ const AboutMeWrapper = styled.div`
 
     li {
       width: 140px;
+      display: flex;
       font-size: ${({ theme }) => theme.fontSize.s};
     }
   }
@@ -61,7 +64,31 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const Bolt = () => {
+  let animationContainer = createRef();
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: animationContainer.current,
+      animationData: animation,
+      loop: true,
+    });
+  }, []);
+
+  return <div ref={animationContainer} style={{ width: '20px', height: '20px' }}></div>;
+};
+
 export const AboutMe = ({ id }) => {
+  let animationContainer = createRef();
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: animationContainer.current,
+      animationData: animation,
+      loop: true,
+    });
+  }, []);
+
   console.log(imgKN1);
   return (
     <InView threshold={0.25} triggerOnce={true}>
@@ -82,12 +109,30 @@ export const AboutMe = ({ id }) => {
             </p>
             <p>For now I continue learning React and some other technologies. Here are a few which I've been working recently with:</p>
             <motion.ul ref={ref} initial={{ opacity: 0 }} animate={inView && { opacity: 1 }} transition={{ duration: 1 }}>
-              <li>&#x26A1;Javascript</li>
-              <li>&#x26A1;React</li>
-              <li>&#x26A1;Redux</li>
-              <li>&#x26A1;Dato CMS</li>
-              <li>&#x26A1;Mock Service Worker</li>
-              <li>&#x26A1;Jest</li>
+              <li>
+                <Bolt />
+                Javascript
+              </li>
+              <li>
+                <Bolt />
+                React
+              </li>
+              <li>
+                <Bolt />
+                Redux
+              </li>
+              <li>
+                <Bolt />
+                Dato CMS
+              </li>
+              <li>
+                <Bolt />
+                Mock Service Worker
+              </li>
+              <li>
+                <Bolt />
+                Jest
+              </li>
             </motion.ul>
             <ImageWrapper>
               <motion.div ref={ref} initial={{ opacity: 0 }} animate={inView && { opacity: 1 }} transition={{ duration: 1 }}>

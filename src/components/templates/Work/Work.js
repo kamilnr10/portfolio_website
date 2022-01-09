@@ -120,7 +120,7 @@ export const Work = ({ id }) => {
                 transition={{ duration: 0.8 }}
               >
                 <Card>
-                  <span>{`Featured project ${inView}`}</span>
+                  <span>Featured project </span>
                   <h3>{name}</h3>
                   <div>
                     <p>{description}</p>

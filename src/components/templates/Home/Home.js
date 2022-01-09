@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Button } from 'components/atoms/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { motion, Variants } from 'framer-motion';
 import { InView } from 'react-intersection-observer';
+import lottie from 'lottie-web';
+import animation from 'assets/lottie/bolt.json';
 
 const typing = keyframes`
  from {
