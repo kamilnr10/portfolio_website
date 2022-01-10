@@ -5,8 +5,16 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 
-const GitHubIcon = styled(FontAwesomeIcon)`
+const IconsWrapper = styled.div`
+  width: 100%;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 0 5px;
+`;
+
+const GitHubIcon = styled(FontAwesomeIcon)`
   bottom: 0;
   color: ${({ theme }) => theme.colors.line};
   font-size: ${({ theme }) => theme.fontSize.xl};
@@ -28,14 +36,6 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const IconsWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-  padding: 0 5px;
-`;
-
 const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,12 +50,12 @@ const InfoWrapper = styled.div`
 export const Footer = () => {
   return (
     <Wrapper>
-      {/* <IconsWrapper>
+      <IconsWrapper>
         <GitHubIcon icon={faHome} />
         <GitHubIcon icon={faGithub} />
         <GitHubIcon icon={faLinkedin} />
         <GitHubIcon icon={faTwitter} />
-      </IconsWrapper> */}
+      </IconsWrapper>
       <InfoWrapper>
         <p>
           <CopyrightIcon icon={faCopyright} />
