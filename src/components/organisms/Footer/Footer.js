@@ -7,13 +7,13 @@ import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 
 const GitHubIcon = styled(FontAwesomeIcon)`
   position: relative;
-  top: 0;
+  bottom: 0;
   color: ${({ theme }) => theme.colors.line};
   font-size: ${({ theme }) => theme.fontSize.xl};
   transition: 0.3s ease-in-out;
 
   &:hover {
-    top: -5px;
+    bottom: 5px;
     color: ${({ theme }) => theme.colors.secondary};
   }
 `;
@@ -51,9 +51,7 @@ export const Footer = () => {
   return (
     <Wrapper>
       <IconsWrapper>
-        <a href="#" target="">
-          <GitHubIcon icon={faHome} />
-        </a>
+        <GitHubIcon icon={faHome} />
         <GitHubIcon icon={faGithub} />
         <GitHubIcon icon={faLinkedin} />
         <GitHubIcon icon={faTwitter} />
