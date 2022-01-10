@@ -50,12 +50,12 @@ const InfoWrapper = styled.div`
 export const Footer = () => {
   return (
     <Wrapper>
-      <IconsWrapper>
+      {/* <IconsWrapper>
         <GitHubIcon icon={faHome} />
         <GitHubIcon icon={faGithub} />
         <GitHubIcon icon={faLinkedin} />
         <GitHubIcon icon={faTwitter} />
-      </IconsWrapper>
+      </IconsWrapper> */}
       <InfoWrapper>
         <p>
           <CopyrightIcon icon={faCopyright} />
