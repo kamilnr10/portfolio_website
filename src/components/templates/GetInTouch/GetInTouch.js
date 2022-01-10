@@ -206,7 +206,7 @@ export const GetInTouch = ({ id }) => {
   return (
     <GetInTouchWrapper>
       <Header id={id}>Get in touch</Header>
-      <p>I'm currently looking for new opportunities, my inbox is always open.</p>
+      <p>I'm interested in finding some new possibilities to work within this field. Please, feel welcome to contact me.</p>
       <Button>
         <a href="mailto:kamil.nr10@icloud.com?subject=hello! I have an opportunity for You!" target="_blank">
           Say hi

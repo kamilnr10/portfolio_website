@@ -85,14 +85,14 @@ const projectsData = [
   {
     id: 1,
     name: 'Porfolio website',
-    description: "This is my portfolio website. I'd like to show You what I am currently working on.",
+    description: "This is my portfolio website. I'd like to show You what I am working on right now.",
     technology: ['React', 'Styled Components', 'Axios', 'DatoCMS'],
     link: 'https://github.com',
   },
   {
     id: 2,
     name: 'React Quiz App',
-    description: "I'm currently working on a game Quiz app React. It is important to me to build things which are useable for me and the others.",
+    description: "At the moment I'm creating a game React Quiz App. It is important to me to build things which are useable for me and the others.",
     technology: ['React', 'Styled Components', 'Axios'],
     link: 'https://github.com',
   },

@@ -97,17 +97,16 @@ export const AboutMe = ({ id }) => {
           <Header id={id}>About me</Header>
           <div>
             <p>
-              Hello! My name is Kamil and I enjoy creating websites and apps. My interest in webdevelopment has sparked in 2019. My journey has
-              started with HTML/CSS and Javascript, then I moved forward to frameworks and deciced to go with React. And guess what? That was a good
-              choice!{' '}
+              Hello! My name is Kamil and I enjoy creating websites and apps. My interest in web development has sparked in 2019. My journey started
+              with HTML/CSS and Javascript, then I moved forward to frameworks and deciced to go with React. And guess what? That was a good choice!
             </p>
             <p>
               Next year I started to work as an administrator of ERP system (Netsuite). It was an incredible opportunity for me to develop my
-              technical and social skills. I worked on implementing the system and one of my responsibilities was to analysize processes within
+              technical and social skills. I was working on implementing the system and one of my responsibilities was to analysize processes within
               company. In the beginning I cooporated with a small team but after systems's launching, I was already working with everyone in the
-              company. Also I had opportunity to write some scripts in javascript in Netsuite.
+              company. Also I had a chance to write some scripts in javascript in Netsuite.
             </p>
-            <p>For now I continue learning React and some other technologies. Here are a few which I've been working recently with:</p>
+            <p>I continue to learn React and other technologies for now. You can find some of them below:</p>
             <motion.ul ref={ref} initial={{ opacity: 0 }} animate={inView && { opacity: 1 }} transition={{ duration: 1 }}>
               <li>
                 <Bolt />

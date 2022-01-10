@@ -91,8 +91,8 @@ export const Home = ({ blur, id }) => {
             <p>aspiring junior frontend developer</p>
             <h2>
               I'm a developer who currently works as an administrator of ERP system called Netsuite. I spend most of my free time improving my
-              programming skills, creating websites and apps. Nowadays my goal is to keep learning and to find an opportunity to start working as a
-              Junior Frontend. Developer.
+              programming skills, creating websites and apps. Nowadays, my goal is to keep learning and to find an opportunity to start working as a
+              Junior Frontend Developer.
             </h2>
             <div>
               <Button>
