@@ -214,7 +214,7 @@ export const GetInTouch = ({ id }) => {
       </Button>
       <p>or</p>
       <ContactForm />
-      <Footer />
+      {/* <Footer /> */}
     </GetInTouchWrapper>
   );
 };
