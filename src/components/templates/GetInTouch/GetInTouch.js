@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { useForm, validate } from 'helpers/useForm';
 import { Footer } from 'components/organisms/Footer/Footer';
+import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const GetInTouchWrapper = styled.div`
   width: 100%;
@@ -113,7 +114,7 @@ const Wrapper = styled.div`
   margin: 25px 0 0;
 `;
 
-const GitHubIcon = styled(FontAwesomeIcon)`
+const Icon = styled(FontAwesomeIcon)`
   margin: 0 0 0 5px;
   color: ${({ theme }) => theme.colors.secondary};
 `;
@@ -214,7 +215,9 @@ export const GetInTouch = ({ id }) => {
       </Button>
       <p>or</p>
       <ContactForm />
-      {/* <Footer /> */}
+      <Icon icon={faGithub} />
+      <Icon icon={faLinkedin} />
+      <Icon icon={faTwitter} />
     </GetInTouchWrapper>
   );
 };
