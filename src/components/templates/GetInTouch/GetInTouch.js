@@ -109,6 +109,15 @@ const Label = styled.label`
   }
 `;
 
+const IconsWrapper = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 0 5px;
+`;
+
 const Wrapper = styled.div`
   position: relative;
   margin: 25px 0 0;
@@ -222,9 +231,12 @@ export const GetInTouch = ({ id }) => {
       </Button>
       <p>or</p>
       <ContactForm />
-      <Icon icon={faGithub} />
-      <Icon icon={faLinkedin} />
-      <Icon icon={faTwitter} />
+      <IconsWrapper>
+        <Icon icon={faHome} />
+        <Icon icon={faGithub} />
+        <Icon icon={faLinkedin} />
+        <Icon icon={faTwitter} />
+      </IconsWrapper>
     </GetInTouchWrapper>
   );
 };
