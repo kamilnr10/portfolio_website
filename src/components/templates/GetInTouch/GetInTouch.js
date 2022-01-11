@@ -111,9 +111,8 @@ const Label = styled.label`
 
 const IconsWrapper = styled.div`
   width: 100%;
-  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 20px 0;
   padding: 0 5px;
 `;
@@ -124,6 +123,7 @@ const Wrapper = styled.div`
 `;
 
 const Icon = styled(FontAwesomeIcon)`
+  position: relative;
   bottom: 0;
   color: ${({ theme }) => theme.colors.line};
   font-size: ${({ theme }) => theme.fontSize.xl};
