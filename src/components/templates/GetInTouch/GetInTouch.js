@@ -233,9 +233,15 @@ export const GetInTouch = ({ id }) => {
       <ContactForm />
       <IconsWrapper>
         <Icon icon={faHome} />
-        <Icon icon={faGithub} />
-        <Icon icon={faLinkedin} />
-        <Icon icon={faTwitter} />
+        <a href="https://github.com/kamilnr10" target="_blank">
+          <Icon icon={faGithub} />
+        </a>
+        <a href="https://www.linkedin.com/in/kamil-nowak-9379a3a4/" target="_blank">
+          <Icon icon={faLinkedin} />
+        </a>
+        <a href="https://twitter.com/" target="_blank">
+          <Icon icon={faTwitter} />
+        </a>
       </IconsWrapper>
     </GetInTouchWrapper>
   );
