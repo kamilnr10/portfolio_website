@@ -14,7 +14,7 @@ Technoglogies which I've used:
 - framer-motion
 - react-observer
 - datoCMS
-- stleed-components
+- styled-components
 - react-router
 - axios
 
