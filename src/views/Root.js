@@ -1,59 +1,17 @@
-import logo from 'assets/logo.svg';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
-import 'views/App.css';
-import styled, { ThemeProvider, keyframes, css } from 'styled-components';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import styled, { ThemeProvider } from 'styled-components';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import Navigation from 'components/organisms/Navigation/Navigation';
 import { theme } from 'assets/styles/theme';
-import { Button } from 'components/atoms/Button/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import imgKN1 from 'assets/images/imgKN1.png';
 import { SectionWrapper } from 'components/organisms/SectionWrapper/SectionWrapper';
-import { Home } from 'components/templates/Home/Home';
-import { AboutMe } from 'components/templates/AboutMe/AboutMe';
-import { Experience } from 'components/templates/Experience/Experience';
-import { Work } from 'components/templates/Work/Work';
-import { GetInTouch } from 'components/templates/GetInTouch/GetInTouch';
-import { Footer } from 'components/organisms/Footer/Footer';
-
-const API_TOKEN = '61dc3fdf30baeca2543868165b35ee';
-
-const MainScreen = ({ jobsInfo }) => {
-  return (
-    <>
-      <Home />
-      <AboutMe id="about" />
-      <Experience id="experience" jobsInfo={jobsInfo} />
-      <Work id="work" />
-      <GetInTouch id="getintouch" />
-      {/* <Footer /> */}
-    </>
-  );
-};
-
-const Wrapper = styled.div`
-  position: relative;
-  /* width: 100vw; */
-  height: 100%;
-  padding: 70px 20px 0 20px;
-  overflow-x: hidden;
-`;
-
-const LoadingWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import { Wrapper, LoadingWrapper } from './Root.styles';
+import { MainScreen } from './MainScreen';
 
 function Root() {
   const [isActive, setIsActive] = useState(false);
-  const [aboutMe, setAboutMe] = useState([]);
   const [jobsInfo, setJobsInfo] = useState([]);
   const [loading, setloading] = useState(false);
 
@@ -87,7 +45,7 @@ function Root() {
         },
         {
           headers: {
-            authorization: `Bearer ${API_TOKEN}`,
+            authorization: `Bearer ${process.env.REACT_APP_DATOCMS_TOKEN}`,
           },
         }
       )
@@ -104,7 +62,6 @@ function Root() {
   };
 
   const handleClick = () => {
-    console.log('klik');
     setIsActive(!isActive);
   };
 
