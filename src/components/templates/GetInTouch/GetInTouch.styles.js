@@ -7,3 +7,19 @@ export const IconsWrapper = styled.div`
   margin: 20px 0;
   padding: 0 5px;
 `;
+
+export const GetInTouchWrapper = styled.div`
+  width: 100%;
+
+  button {
+    display: block;
+    margin: 20px auto;
+  }
+
+  p {
+    &:nth-child(4) {
+      margin: 0 0 20px;
+      text-align: center;
+    }
+  }
+`;

@@ -6,24 +6,8 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { Icon } from 'components/atoms/Icon/Icon';
 import { ContactForm } from 'components/templates/ContactForm/ContactForm';
-
+import { GetInTouchWrapper } from './GetInTouch.styles';
 import { IconsWrapper } from './GetInTouch.styles';
-
-const GetInTouchWrapper = styled.div`
-  width: 100%;
-
-  button {
-    display: block;
-    margin: 20px auto;
-  }
-
-  p {
-    &:nth-child(4) {
-      margin: 0 0 20px;
-      text-align: center;
-    }
-  }
-`;
 
 export const GetInTouch = ({ id }) => {
   return (

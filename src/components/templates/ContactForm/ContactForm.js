@@ -1,37 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from 'components/atoms/Button/Button';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { FormField } from 'components/molecules/FormField/FormField';
 import { FormTextArea } from 'components/molecules/FormTextArea/FormTextArea';
 import { useForm, validate } from 'helpers/useForm';
-
-const FormWrapper = styled.div`
-  width: 100%;
-  border: none;
-  border: 1px solid ${({ theme }) => theme.colors.secondary};
-  border-radius: 5px;
-`;
-
-const Form = styled.form`
-  padding: 0 10px;
-
-  p {
-    position: relative;
-    top: 10px;
-    color: ${({ theme }) => theme.colors.error};
-    font-size: ${({ theme }) => theme.fontSize.xs};
-    text-align: left;
-
-    &:nth-child(9) {
-      top: 0;
-    }
-  }
-`;
-
-const FormTitle = styled.h2``;
+import { FormWrapper, Form, FormTitle } from './ContactForm.styles';
 
 export const ContactForm = () => {
   const { handleChange, values, handleSubmit, errors, sendMessage } = useForm(validate);
