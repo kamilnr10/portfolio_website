@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   height: 100%;
   padding: 70px 20px 0 20px;
   overflow-x: hidden;
+
+  @media (min-width: 768px) {
+    padding: 70px 70px 0 70px;
+  }
 `;
 
 export const LoadingWrapper = styled.div`

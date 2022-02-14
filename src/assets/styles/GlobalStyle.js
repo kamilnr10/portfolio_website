@@ -14,29 +14,34 @@ ${'' /* @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&fami
 }
 
 body {
-    ${'' /* font-family: 'Ubuntu', sans-serif; */}
     font-family: 'Titillium Web', sans-serif;
     background-color: #080C21;
-    color: #f3f3f3;
+    color: #ccd6f6;
 
 }
 
 h1 {
-    font-size: ${({ theme }) => theme.fontSize.xl}
+    font-size: ${({ theme }) => theme.fontSize.xl};
+
+    @media (min-width: 768px) {
+        font-size: ${({ theme }) => theme.fontSize.xxl};
+    }
 }
 
 p {
     font-size: ${({ theme }) => theme.fontSize.l};
     letter-spacing: ${({ theme }) => theme.letterSpacing.s};
     line-height: 1.5;
+
+    @media (min-width: 768px) {
+        font-size: ${({ theme }) => theme.fontSize.xl};
+    }
 }
 
 a, button {
-    ${'' /* font-family: 'Ubuntu', sans-serif; */}
-    ${'' /* color: ${({ theme }) => theme.colors.secondary}; */}
     font-family: 'Titillium Web', sans-serif;
     text-decoration: none;
-    ${'' /* color: ${({ theme }) => theme.colors.secondary} */}
+
 }
 
 a:visited {

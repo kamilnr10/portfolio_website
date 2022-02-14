@@ -4,6 +4,9 @@ import styled from 'styled-components';
 export const MenuSVG = styled.div`
   z-index: 9999;
 
+  @media (min-width: 769px) {
+    display: none;
+  }
   svg {
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }

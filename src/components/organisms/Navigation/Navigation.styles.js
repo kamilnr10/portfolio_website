@@ -14,6 +14,10 @@ export const Nav = styled.div`
   top: ${({ visible }) => (visible ? '0px ' : '-60px')};
   background-color: ${({ visible, theme }) => visible && theme.colors.background};
   transition: top 0.3s;
+
+  @media (min-width: 768px) {
+    justify-content: space-around;
+  }
 `;
 
 export const Logo = styled(LogoSvg)`
@@ -21,35 +25,45 @@ export const Logo = styled(LogoSvg)`
   height: 40px;
   margin: 10px 20px;
   z-index: 999;
+
+  @media (min-width: 768px) {
+    width: 45px;
+    height: 45px;
+  }
 `;
 
 export const AsideNav = styled.div`
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  bottom: 0;
-  right: ${({ isActive }) => (isActive ? '0px' : '-100vw')};
-  transition: 0.3s ease-in-out;
+  @media (max-width: 768px) {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    bottom: 0;
+    right: ${({ isActive }) => (isActive ? '0px' : '-100vw')};
+    transition: 0.3s ease-in-out;
+  }
 
-  div:first-child {
+  /* div:first-child {
     width: 30%;
     height: 100%;
     background-color: ${({ theme }) => theme.colors.background};
-  }
+  } */
 
   div:nth-child(1) {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 70%;
-    height: 100%;
-    right: ${({ isActive }) => (isActive ? '0px' : '-100vw')};
-    background-color: ${({ theme }) => theme.colors.backgroundNav};
-    box-shadow: ${(props) => (props.isActive ? `10px 10px 10px 10px ${props.theme.colors.backgroundNav}` : '')};
-    transition: 0.3s ease-in-out;
+    /* display: flex; */
+    /* justify-content: space-around; */
+    /* align-items: center; */
+
+    @media (max-width: 768px) {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 70%;
+      height: 100%;
+      right: ${({ isActive }) => (isActive ? '0px' : '-100vw')};
+      background-color: ${({ theme }) => theme.colors.backgroundNav};
+      box-shadow: ${(props) => (props.isActive ? `10px 10px 10px 10px ${props.theme.colors.backgroundNav}` : '')};
+      transition: 0.3s ease-in-out;
+    }
   }
 `;
 
@@ -60,25 +74,37 @@ export const NavWrapper = styled.div`
   align-items: center;
   width: 100%;
 
-  nav {
-    height: 300px;
+  ol {
+    display: flex;
 
-    ol {
-      display: flex;
+    @media (max-width: 768px) {
       flex-direction: column;
       justify-content: space-around;
-      height: 100%;
+      height: 300px;
     }
-    ol li {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      margin: 20px 0;
 
-      span {
-        color: ${({ theme }) => theme.colors.secondary};
+    button {
+      @media (min-width: 768px) {
+        /* margin: 0 10px 0; */
       }
+    }
+  }
+
+  ol li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+
+    @media (min-width: 769px) {
+      flex-direction: row;
+      padding: 0 20px;
+      margin: 0;
+    }
+
+    span {
+      color: ${({ theme }) => theme.colors.secondary};
     }
   }
 `;

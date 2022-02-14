@@ -6,6 +6,7 @@ import pdf from 'assets/resume/resume.pdf';
 import { Nav, Logo, AsideNav, NavWrapper, Button } from './Navigation.styles';
 import { navigationLinks } from 'data/data';
 import { LockScreen } from 'components/atoms/LockScreen/LockScreen';
+import Media from 'react-media';
 
 const Navigation = ({ isActive, handleClick }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -31,24 +32,31 @@ const Navigation = ({ isActive, handleClick }) => {
         <HamburgerMenu isActive={isActive} handleClick={handleClick} />
         <AsideNav isActive={isActive}>
           <NavWrapper>
-            <nav>
-              <ol>
-                {navigationLinks.map((link, index) => (
-                  <li key={link}>
-                    <span>{`0${index + 1}.`}</span>
-                    <LinkScroll to={link.replace(/ /g, '')} smooth={true} duration={500} onClick={handleClick}>
-                      {link.charAt(0).toUpperCase() + link.slice(1)}
-                    </LinkScroll>
-                  </li>
-                ))}
-
-                <Button onClick={handleClick} trailingIcon="picture_as_pdf" label="Resume">
-                  <a href={pdf} rel="noopener noreferrer" target="_blank">
-                    resume
-                  </a>
-                </Button>
-              </ol>
-            </nav>
+            <ol>
+              {navigationLinks.map((link, index) => (
+                <li key={link}>
+                  <span>{`0${index + 1}.`}</span>
+                  <Media queries={{ small: { maxWidth: 769 } }}>
+                    {(matches) =>
+                      matches.small ? (
+                        <LinkScroll to={link.replace(/ /g, '')} smooth={true} duration={500} onClick={handleClick}>
+                          {link.charAt(0).toUpperCase() + link.slice(1)}
+                        </LinkScroll>
+                      ) : (
+                        <LinkScroll to={link.replace(/ /g, '')} smooth={true} duration={500}>
+                          {link.charAt(0).toUpperCase() + link.slice(1)}
+                        </LinkScroll>
+                      )
+                    }
+                  </Media>
+                </li>
+              ))}
+              <Button trailingIcon="picture_as_pdf" label="Resume">
+                <a href={pdf} rel="noopener noreferrer" target="_blank">
+                  resume
+                </a>
+              </Button>
+            </ol>
           </NavWrapper>
         </AsideNav>
         {isActive && <LockScreen />}
