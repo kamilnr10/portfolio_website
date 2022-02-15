@@ -36,7 +36,7 @@ const Navigation = ({ isActive, handleClick }) => {
               {navigationLinks.map((link, index) => (
                 <li key={link}>
                   <span>{`0${index + 1}.`}</span>
-                  <Media queries={{ small: { maxWidth: 769 } }}>
+                  <Media queries={{ small: { maxWidth: 765 } }}>
                     {(matches) =>
                       matches.small ? (
                         <LinkScroll to={link.replace(/ /g, '')} smooth={true} duration={500} onClick={handleClick}>

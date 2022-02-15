@@ -11,8 +11,10 @@ export const Nav = styled.div`
   height: 70px;
   width: 100%;
   text-align: center;
-  top: ${({ visible }) => (visible ? '0px ' : '-60px')};
-  background-color: ${({ visible, theme }) => visible && theme.colors.background};
+  top: ${({ visible }) => (visible ? '0px ' : '-70px')};
+  background-color: ${({ visible, theme }) => visible && theme.colors.backgroundNav};
+  backdrop-filter: blur(7px);
+  box-shadow: 0px 0px 7px 0px rgba(17, 20, 49, 0.5);
   transition: top 0.3s;
 
   @media (min-width: 768px) {
@@ -33,7 +35,7 @@ export const Logo = styled(LogoSvg)`
 `;
 
 export const AsideNav = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -53,7 +55,7 @@ export const AsideNav = styled.div`
     /* justify-content: space-around; */
     /* align-items: center; */
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       position: fixed;
       bottom: 0;
       right: 0;
@@ -77,7 +79,7 @@ export const NavWrapper = styled.div`
   ol {
     display: flex;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       flex-direction: column;
       justify-content: space-around;
       height: 300px;
@@ -85,7 +87,8 @@ export const NavWrapper = styled.div`
 
     button {
       @media (min-width: 768px) {
-        /* margin: 0 10px 0; */
+        padding: 5px 15px;
+        font-size: ${({ theme }) => theme.fontSize.m};
       }
     }
   }
@@ -97,7 +100,7 @@ export const NavWrapper = styled.div`
     align-items: center;
     margin: 20px 0;
 
-    @media (min-width: 769px) {
+    @media (min-width: 768px) {
       flex-direction: row;
       padding: 0 20px;
       margin: 0;

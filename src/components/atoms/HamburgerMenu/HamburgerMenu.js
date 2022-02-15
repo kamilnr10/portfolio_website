@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const MenuSVG = styled.div`
   z-index: 9999;
 
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     display: none;
   }
   svg {

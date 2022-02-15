@@ -13,7 +13,7 @@ const typing = keyframes`
       width: 0
     }
     to {
-      width: 100%
+      width: 270px
     }
 `;
 
@@ -29,10 +29,21 @@ const blinkCaret = keyframes`
 `;
 
 export const HomeWrapper = styled.div`
+  @media (min-width: 768px) {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   p:first-child {
     margin: 20px 0 15px;
     font-size: ${({ theme }) => theme.fontSize.l};
     color: ${({ theme }) => theme.colors.secondary};
+
+    @media (min-width: 768px) {
+      font-size: ${({ theme }) => theme.fontSize.xl};
+    }
   }
 
   p:nth-child(3) {
@@ -46,13 +57,33 @@ export const HomeWrapper = styled.div`
     white-space: nowrap; /* Keeps the content on a single line */
     letter-spacing: 0.15em; /* Adjust as needed */
     animation: ${typing} 3.5s steps(40, end), ${blinkCaret} 0.75s step-end infinite;
+
+    @media (min-width: 768px) {
+      margin: 15px 0;
+    }
   }
 
   h1 {
+    width: 250px;
     margin: 10px 0 0 0;
     font-size: ${({ theme }) => theme.fontSize.xxl};
     font-weight: ${({ theme }) => theme.fontBold.bold};
     letter-spacing: 2px;
+
+    @media (min-width: 768px) {
+      font-size: ${({ theme }) => theme.fontSize.sxl};
+      background-image: linear-gradient(${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.secondary});
+      background-repeat: no-repeat;
+      background-size: 0% 100%;
+      background-position-x: right;
+      transition: background-size 500ms;
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.background};
+        background-size: 100% 100%;
+        background-position-x: left;
+      }
+    }
   }
 
   h2 {
@@ -62,6 +93,10 @@ export const HomeWrapper = styled.div`
     font-weight: ${({ theme }) => theme.fontBold.light};
     letter-spacing: ${({ theme }) => theme.letterSpacing.s};
     line-height: 1.4;
+
+    @media (min-width: 768px) {
+      font-size: ${({ theme }) => theme.fontSize.xl};
+    }
   }
 
   div {
