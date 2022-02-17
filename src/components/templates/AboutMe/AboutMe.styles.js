@@ -17,6 +17,12 @@ export const AboutMeWrapper = styled.div`
       width: 140px;
       display: flex;
       font-size: ${({ theme }) => theme.fontSize.s};
+
+      @media (min-width: 768px) {
+        width: 180px;
+        margin: 0 auto;
+        font-size: ${({ theme }) => theme.fontSize.l};
+      }
     }
   }
 `;

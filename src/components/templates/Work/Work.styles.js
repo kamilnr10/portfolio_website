@@ -11,7 +11,13 @@ export const WorkWrapper = styled.div`
 export const Card = styled.div`
   position: relative;
   padding: 25px 25px;
-  background-color: ${({ theme }) => theme.colors.backgroundNav};
+  background-color: ${({ theme }) => theme.colors.backgroundSec};
+  box-shadow: 0px 0px 13px 0px rgba(11, 18, 51, 1);
+  transition: ease-in-out 0.4s;
+
+  &:hover {
+    box-shadow: 0px 0px 13px 0px #24379b;
+  }
 
   span:first-of-type {
     padding: 5px 0;

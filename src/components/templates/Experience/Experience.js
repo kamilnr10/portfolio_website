@@ -18,9 +18,9 @@ export const Experience = ({ id, jobsInfo }) => {
   }, []);
 
   const toggleActive = (id) => {
-    // console.log(console.log(jobsInfo));
     const obj = appState.objects.filter((item) => item.idCustom === id)[0];
     setAppState({ ...appState, activeObject: obj });
+    console.log(obj);
   };
 
   const toggleActiveStyles = (id) => {
@@ -63,10 +63,13 @@ export const Experience = ({ id, jobsInfo }) => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
             >
-              <h2>{appState.activeObject.job}</h2>
-              <a target="_blank" href={appState.activeObject.website}>
-                <p>@{appState.activeObject.company}</p>
-              </a>
+              <h2>
+                {appState.activeObject.job}{' '}
+                <a target="_blank" href={appState.activeObject.website}>
+                  <p>@{appState.activeObject.company}</p>
+                </a>
+              </h2>
+
               <span>{appState.activeObject.date}</span>
               <ul>
                 {responsibilities.map((item, index) => (

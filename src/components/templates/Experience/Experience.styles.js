@@ -2,10 +2,30 @@ import styled from 'styled-components';
 
 export const ExperienceWrapper = styled.div`
   width: 100%;
+
+  @media (min-width: 768px) {
+    div {
+      display: flex;
+    }
+  }
 `;
 
 export const ActiveJob = styled.div`
   margin: 20px 0 0 0;
+
+  @media (min-width: 768px) {
+    width: 100%;
+    height: calc(4 * 62px);
+    margin: 0 0 0 30px;
+    overflow-y: scroll;
+  }
+
+  div {
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 
   p {
     margin: 5px 0 0 0;
@@ -44,6 +64,12 @@ export const TabList = styled.div`
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
+
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      width: 120px;
+    }
   }
 `;
 
@@ -56,6 +82,14 @@ export const StyledLine = styled.div`
   transform: translateX(calc(${({ active }) => active - 1} * 120px));
   background-color: ${({ theme }) => theme.colors.secondary};
   transition: 0.3s ease-in-out;
+
+  @media (min-width: 768px) {
+    width: 2px;
+    height: 62px;
+    right: 0;
+    transform: translateY(calc(${({ active }) => active - 4} * 62px));
+    scrollbar-width: none;
+  }
 `;
 
 export const Button = styled.button`
@@ -70,6 +104,11 @@ export const Button = styled.button`
   border-bottom: 2px solid ${({ theme }) => theme.colors.line};
   text-align: center;
   transition: 0.2s ease-in-out;
+
+  @media (min-width: 768px) {
+    border-bottom: none;
+    border-right: 2px solid ${({ theme }) => theme.colors.line};
+  }
 
   /* &:active {
     background-color: ${({ theme }) => theme.colors.focus};
