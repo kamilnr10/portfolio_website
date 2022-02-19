@@ -28,11 +28,11 @@ export const Work = ({ id }) => {
                   <div>
                     <p>{description}</p>
                   </div>
-                  <ul>
-                    {technology.map((element, index) => (
-                      <li key={index}>{element}</li>
-                    ))}
-                  </ul>
+
+                  {technology.map((element, index) => (
+                    <span key={index}>{element}</span>
+                  ))}
+
                   <footer>
                     <a target="_blank" href={link}>
                       <FontAwesomeIcon icon={faGithub} />

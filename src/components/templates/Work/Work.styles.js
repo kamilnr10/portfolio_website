@@ -6,6 +6,24 @@ export const WorkWrapper = styled.div`
   li {
     margin: 20px 0;
   }
+
+  @media (min-width: 768px) {
+    ul {
+      /* height: 500px; */
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      margin: 25px auto;
+      gap: 40px 40px;
+
+      li {
+        margin: 0;
+        /* width: 270px;
+        height: 270px; */
+        font-size: ${({ theme }) => theme.fontSize.s};
+      }
+    }
+  }
 `;
 
 export const Card = styled.div`
@@ -15,28 +33,38 @@ export const Card = styled.div`
   box-shadow: 0px 0px 13px 0px rgba(11, 18, 51, 1);
   transition: ease-in-out 0.4s;
 
+  @media (min-width: 768px) {
+      width: 270px;
+      height: 230px;
+  }
+
+ 
+
   &:hover {
     box-shadow: 0px 0px 13px 0px #24379b;
   }
 
-  span:first-of-type {
-    padding: 5px 0;
-    color: ${({ theme }) => theme.colors.secondary};
-  }
+    span {
+      padding: 5px 10px 0 0;
+      color: ${({ theme }) => theme.colors.secondary};
 
-  h3 {
-    font-size: ${({ theme }) => theme.fontSize.xl};
-  }
+      @media (min-width: 768px) {
+      font-size: ${({ theme }) => theme.fontSize.xs}
+      }
+    }
 
-  ul {
-    display: flex;
-    flex-grow: 1;
-    flex-wrap: wrap;
+    h3 {
+      font-size: ${({ theme }) => theme.fontSize.xl};
 
-    li {
-      margin: 0;
-      padding: 0 10px 0 0;
-      font-weight: 300;
+      @media (min-width: 768px) {
+      font-size: ${({ theme }) => theme.fontSize.l}
+      }
+    }
+
+    div p {
+        @media (min-width: 768px) {
+        font-size: ${({ theme }) => theme.fontSize.xs}
+      }
     }
   }
 

@@ -5,6 +5,11 @@ export const FormWrapper = styled.div`
   border: none;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 5px;
+
+  @media (min-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
 
 export const Form = styled.form`

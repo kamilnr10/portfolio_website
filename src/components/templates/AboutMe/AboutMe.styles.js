@@ -5,6 +5,10 @@ export const AboutMeWrapper = styled.div`
 
   p {
     margin: 10px 0;
+
+    @media (min-width: 768px) {
+      font-size: ${({ theme }) => theme.fontSize.m};
+    }
   }
 
   ul {
@@ -21,7 +25,7 @@ export const AboutMeWrapper = styled.div`
       @media (min-width: 768px) {
         width: 180px;
         margin: 0 auto;
-        font-size: ${({ theme }) => theme.fontSize.l};
+        font-size: ${({ theme }) => theme.fontSize.m};
       }
     }
   }

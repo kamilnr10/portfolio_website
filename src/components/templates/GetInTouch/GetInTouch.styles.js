@@ -17,6 +17,10 @@ export const GetInTouchWrapper = styled.div`
   }
 
   p {
+    @media (min-width: 768px) {
+      font-size: ${({ theme }) => theme.fontSize.m};
+    }
+
     &:nth-child(4) {
       margin: 0 0 20px;
       text-align: center;

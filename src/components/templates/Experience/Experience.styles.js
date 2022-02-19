@@ -85,9 +85,9 @@ export const StyledLine = styled.div`
 
   @media (min-width: 768px) {
     width: 2px;
-    height: 62px;
+    height: 60px;
     right: 0;
-    transform: translateY(calc(${({ active }) => active - 4} * 62px));
+    transform: translateY(calc(${({ active }) => active - 4} * 60px));
     scrollbar-width: none;
   }
 `;
