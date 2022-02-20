@@ -5,7 +5,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { motion, Variants } from 'framer-motion';
 import { InView } from 'react-intersection-observer';
-import { WorkWrapper, Card } from './Work.styles';
+import { WorkWrapper, Card, CardTopBar, Folder } from './Work.styles';
 import { projectsData } from 'data/data';
 
 export const Work = ({ id }) => {
@@ -23,16 +23,21 @@ export const Work = ({ id }) => {
                 transition={{ duration: 0.8 }}
               >
                 <Card>
-                  <span>Featured project </span>
-                  <h3>{name}</h3>
+                  <CardTopBar>
+                    <div>
+                      <span>Featured project </span>
+                      <h3>{name}</h3>
+                    </div>
+                    <Folder />
+                  </CardTopBar>
                   <div>
                     <p>{description}</p>
                   </div>
-
-                  {technology.map((element, index) => (
-                    <span key={index}>{element}</span>
-                  ))}
-
+                  <div>
+                    {technology.map((element, index) => (
+                      <span key={index}>{element}</span>
+                    ))}
+                  </div>
                   <footer>
                     <a target="_blank" href={link}>
                       <FontAwesomeIcon icon={faGithub} />
