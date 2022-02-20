@@ -8,7 +8,15 @@ export const Wrapper = styled.div`
   overflow-x: hidden;
 
   @media (min-width: 768px) {
-    padding: 70px 90px 0 90px;
+    padding: 70px 110px 0 110px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 70px 180px 0 180px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 70px 220px 0 220px;
   }
 `;
 

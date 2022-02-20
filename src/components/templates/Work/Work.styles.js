@@ -29,10 +29,22 @@ export const WorkWrapper = styled.div`
       justify-content: space-around;
       align-items: center;
       margin: 25px 0;
-      gap: 40px 40px;
+      gap: 10px 10px;
 
       li {
         font-size: ${({ theme }) => theme.fontSize.m};
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    ul {
+      /* flex-wrap: nowrap; */
+      /* justify-content: space-between; */
+      gap: 10px 10px;
+
+      li {
+        width: 240px;
       }
     }
   }
@@ -47,17 +59,24 @@ export const CardTopBar = styled.div`
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
   margin: 0 auto;
   padding: 20px 20px;
   background-color: ${({ theme }) => theme.colors.backgroundSec};
   box-shadow: 0px 0px 13px 0px rgba(11, 18, 51, 1);
   transition: ease-in-out 0.4s;
-  width: 280px;
-  height: 280px;
+  width: 290px;
+  height: 290px;
 
+  @media (min-width: 768px) {
+    width: 260px;
+  }
 
+  @media (min-width: 1024px) {
+    width: 240px;
+    height: 300px;
+  }
 
   &:hover {
     box-shadow: 0px 0px 13px 0px #24379b;

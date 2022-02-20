@@ -20,6 +20,15 @@ export const Nav = styled.div`
   @media (min-width: 768px) {
     justify-content: space-around;
   }
+
+  @media (min-width: 1024px) {
+    justify-content: space-between;
+    padding: 0 40px 0 30px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 0 10% 0 8%;
+  }
 `;
 
 export const Logo = styled(LogoSvg)`
@@ -44,17 +53,7 @@ export const AsideNav = styled.div`
     transition: 0.3s ease-in-out;
   }
 
-  /* div:first-child {
-    width: 30%;
-    height: 100%;
-    background-color: ${({ theme }) => theme.colors.background};
-  } */
-
   div:nth-child(1) {
-    /* display: flex; */
-    /* justify-content: space-around; */
-    /* align-items: center; */
-
     @media (max-width: 767px) {
       position: fixed;
       bottom: 0;
